@@ -9,11 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
+    
+    * 
+    {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family:'Poppins', sans-serif;
     }
 
     body {
@@ -124,14 +126,113 @@
       opacity: 1;
       transform: translateY(0);
     }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Popup box */
+    .popup {
+        width: 250px;
+        padding: 15px;
+        margin-top: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.4s ease;
+        display: none;
+    }
+
+    /* Active animation */
+    .popup.show {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+    }
+        body {
+        font-family: Arial, sans-serif;
+    }
+
+    /* Button */
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Dark background overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* black but not full */
+        display: none;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.4s ease;
+    }
+
+    /* Popup box */
+    .popup {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        width: 280px;
+        text-align: center;
+        transform: scale(0.7);
+        animation: popUp 0.4s ease forwards;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes popUp {
+        to { transform: scale(1); }
+    }
   </style>
 </head>
 <body>
+  <button class="btn" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; background: #00eaff; color: #000; border-radius: 4px;" onclick="openPopup()">Login as a student</button>
+<div class="overlay" id="overlay" class="overlay">
+        <h3>Enter Pin</h3>
+        <input type="text" placeholder="Type here...">
+        <br><br>
+        <button onclick="closePopup()">Close</button>
+</div>
 
-  <!-- HERO SECTION -->
+<script>
+    function openPopup() {
+        document.getElementById("overlay").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("overlay").style.display = "none";
+    }
+</script>
+<!-- HERO SECTION -->
   <header>
     <div>
-        <img src="aimers-removebg-preview.png" alt="AIMERS Logo" style="width:150px; height:auto; margin-bottom:20px;">
+        <img src="https://media.discordapp.net/attachments/1460621957761601639/1467567861705867467/image-removebg-preview.png?ex=6980da94&is=697f8914&hm=b883f9d2be84cbbbab1d22bfa92031084dbbc3e6098cd7b634b6de898465e099&=&format=webp&quality=lossless&width=262&height=264" alt="AIMERS Logo" style="width:150px; height:auto; margin-bottom:20px;">
       <h1>AIMERS</h1>
       <p>Real Result Producer</p>
       <a href="#about" class="btn">Explore More</a>
@@ -180,11 +281,11 @@
     <div class="cards">
       <div class="card">
         <h3>NEET</h3>
-        <p> Biology Specialist Teacher</p>
+        <p>Biology specialist teacher</p>
       </div>
       <div class="card">
         <h3>JEE</h3>
-        <p>JEE Mains + Advance Level Preparation</p>
+        <p>JEE Mains + Advance Preparation</p>
       </div>
       <div class="card">
         <h3>FOUNDATION</h3>
@@ -196,8 +297,9 @@
       </div>
     </div>
   </section>
-
-  <!-- FEATURES -->
+  <img src="aimersaddmisiion.png" alt="AIMERS Pamplate" style="width:50%; margin-top:20px; border-radius:15px;" class="center-img" loading="lazy">
+  <img src="https://media.discordapp.net/attachments/1460621957761601639/1467492433356128438/95671557-1fbd-4fed-8c5c-2fa1d10618d8.png?ex=69809454&is=697f42d4&hm=34ab620b3badab201191c6a800311ec667b1890d3f1910604641fad110dfe3e6&=&format=webp&quality=lossless&width=780&height=574" alt="AIMERS Pamplate" style="width:50%; margin-top:20px; border-radius:15px;" class="center-img" loading="lazy">
+  <!-- FEATURES  -->
   <section class="reveal">
     <h2 class="section-title">Why Choose AIMERS?</h2>
     <div class="cards">
@@ -230,4 +332,3 @@
 
 </body>
 </html>
-
