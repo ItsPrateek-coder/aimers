@@ -4,6 +4,20 @@
     <head>
     <title>Admin Dashboard</title>
     <script src="script.js"></script> 
+        <style>    
+        body {
+            background: #02cd61;
+            background: linear-gradient(to right, #268c00, #b6bcb6, #ea6607);
+            color: #fff;
+            display: flex; /* Added to center everything */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        </style>
 </head>
 <body>
     <script>
@@ -27,6 +41,38 @@
     <p>Only you can see this. You can add your editing tools here.</p>
     
     <button onclick="logout()">Logout</button>
+<section style="margin-top: 30px; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+    <h2>Update Student Notice Board</h2>
+    <textarea id="noticeInput" placeholder="Type or Edit your update..." rows="4" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;"></textarea>
+    
+    <div style="display: flex; gap: 10px;">
+        <button onclick="postNotice()" style="background: #00ff88; color: #000; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Post/Update Notice</button>
+        <button onclick="deleteNotice()" style="background: #ff4b2b; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Delete Current Notice</button>
+    </div>
+    <p id="postStatus" style="color: #00eaff; margin-top: 10px;"></p>
+</section>
 
+<script>
+    // Load existing notice into the textarea so the Admin can edit it easily
+    window.onload = function() {
+        const savedData = localStorage.getItem("adminNotice");
+        if (savedData) {
+            const notice = JSON.parse(savedData);
+            document.getElementById("noticeInput").value = notice.text;
+        }
+    };
+</script>
+
+<script>
+    // Load existing notice into the textarea so the Admin can edit it easily
+    window.onload = function() {
+        const savedData = localStorage.getItem("adminNotice");
+        if (savedData) {
+            const notice = JSON.parse(savedData);
+            document.getElementById("noticeInput").value = notice.text;
+        }
+    };
+</script>
+</section>
 </body>
 </html>
