@@ -2,6 +2,33 @@
 <html>
 <head>
     <title>Student Dashboard</title>
+<style>
+        body {
+            background: #0f2027;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            display: flex; /* Added to center everything */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            border-radius: 5px;
+            background: #00eaff;
+            color: #000;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+        p{
+            text-align: center;
+        }
+        </style>
 </head>
 <body>
     <script>
@@ -17,5 +44,43 @@
     <button onclick="logout()">Logout</button>
 
     <script src="script.js"></script>
+<section style="margin-top: 30px; border-left: 5px solid #00eaff; background: rgba(0,234,255,0.1); padding: 20px; border-radius: 0 15px 15px 0;">
+    <h2 style="color: #00eaff;">🔔 Announcement</h2>
+    <p id="displayNotice" style="font-size: 1.2rem; white-space: pre-wrap; margin-bottom: 15px;">Nothing</p>
+    
+    <div style="font-size: 0.85rem; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+        <span id="noticeTimeAgo"></span> | <span id="noticeDate"></span>
+    </div>
+</section>
+
+<script>
+    window.onload = function() {
+        const savedData = localStorage.getItem("adminNotice");
+        
+        if (savedData) {
+            const notice = JSON.parse(savedData);
+            document.getElementById("displayNotice").innerText = notice.text;
+
+            // 1. Calculate Time Ago
+            const now = new Date().getTime();
+            const diffInMs = now - notice.timestamp;
+            const diffInMins = Math.floor(diffInMs / 60000);
+            const diffInHours = Math.floor(diffInMins / 60);
+
+            let timeString = "";
+            if (diffInMins < 1) timeString = "Just now";
+            else if (diffInMins < 60) timeString = `Posted ${diffInMins} minutes ago`;
+            else if (diffInHours < 24) timeString = `Posted ${diffInHours} hours ago`;
+            else timeString = `Posted ${Math.floor(diffInHours / 24)} days ago`;
+
+            document.getElementById("noticeTimeAgo").innerText = timeString;
+
+            // 2. Format Date and Day
+            const postDate = new Date(notice.timestamp);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById("noticeDate").innerText = postDate.toLocaleDateString(undefined, options);
+        }
+    };
+</script>
 </body>
 </html>
