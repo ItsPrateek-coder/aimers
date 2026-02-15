@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+    <title>Admin Dashboard</title>
+    <script src="script.js"></script> 
+</head>
+<body>
+    <script>
+        // Check immediately
+        if (localStorage.getItem("role") !== "admin") {
+            alert("Access Denied!");
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <script>
+        // Check if user is NOT an admin
+        if (localStorage.getItem("role") !== "admin") {
+            alert("Access Denied! Admins only.");
+            window.location.href = "login.html"; // Send them away
+        }
+    </script>
+
+    <h1>👑 Admin Dashboard</h1>
+    <p>Only you can see this. You can add your editing tools here.</p>
+    
+    <button onclick="logout()">Logout</button>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+</head>
+<body>
+    <script>
+        // Check if user is NOT a student
+        if (localStorage.getItem("role") !== "student") {
+            window.location.href = "login.html";
+        }
+    </script>
+
+    <h1>🎓 Student Dashboard</h1>
+    <p>Welcome, Student! You cannot edit the site.</p>
+
+    <button onclick="logout()">Logout</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
